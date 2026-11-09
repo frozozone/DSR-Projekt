@@ -1,0 +1,32 @@
+# docker-compose.yml - zagon: "docker compose up -d" v tej mapi
+services:
+  # PostgreSQL baza
+  db:
+    image: postgres:16
+    container_name: dsr_baza
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: geslo123
+      POSTGRES_DB: dsr_baza
+    ports:
+      - "5432:5432"
+    volumes:
+      # baza.sql se izvede samo ob PRVEM zagonu (ko je volume prazen)
+      - ./baza.sql:/docker-entrypoint-initdb.d/init.sql
+      # tukaj se hranijo podatki, da ostanejo tudi ko container ugasnemo
+      - dsr_podatki:/var/lib/postgresql/data
+
+  # PHP + Apache, stran je na http://localhost:8080
+  php:
+    build: .                    # uporabi Dockerfile iz te mape
+    container_name: dsr_php
+    ports:
+      - "8080:80"
+    volumes:
+      # nasa koda iz mape app se "preslika" v container, spremembe so vidne takoj
+      - ../app:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  dsr_podatki:

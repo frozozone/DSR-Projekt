@@ -1,0 +1,55 @@
+NAVODILA ZA VZPOSTAVITEV BAZE:
+
+Uporabljamo Docker (PostgreSQL 16) in DataGrip.
+
+1. Zazeni Docker Desktop (mora bit prizgan preden zaganjas ukaze)
+
+2. V mapi baza-setup odpri cmd
+
+	2.1 Zazeni ukaz "docker compose up -d"
+
+		V Dockerju bi se ti moral ustvarit nov container "dsr_baza"
+		Ce imas v dockerju druge containerje na portu 5432 jih ustavi ali jim spremeni port
+
+	2.2 Preveri ce dela z ukazom "docker ps"
+
+		Status mora biti "Up"
+
+	2.3 Ce si spremenil baza.sql in hoces bazo ustvarit na novo:
+
+		docker compose down -v      (-v pobrise tudi podatke!)
+		docker compose up -d
+
+		baza.sql se namrec izvede SAMO ob prvem zagonu, ko je baza se prazna.
+
+3. V DataGripu dodaj nov data source - PostgreSQL in izpolni:
+
+	Name: dsr_baza@localhost
+
+	General -
+		Host: localhost
+		Port: 5432
+
+		Authentication: User & Password
+		User: admin
+		Password: geslo123
+		Save: Forever
+
+		Database: dsr_baza
+
+		URL: jdbc:postgresql://localhost:5432/dsr_baza
+
+	3.1 Stisni "Test Connection", vrnit mora "Succeeded".
+	    Ce pise "database does not exist" preveri ime baze (dsr_baza) in ali je container prizgan.
+
+4. V konzoli DataGripa lahko preveris tabele:
+
+	SELECT * FROM uporabnik;
+	SELECT * FROM vrsta_transakcije;
+	SELECT * FROM nacin_placila;
+	SELECT * FROM kategorija;
+	SELECT * FROM transakcija;
+
+5. Testni uporabniki (vsi imajo geslo "geslo123"):
+
+	ana, marko, nina

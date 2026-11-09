@@ -1,0 +1,24 @@
+AI DNEVNIK
+
+Pri projektu sem uporabil AI za:
+
+- pisanje INSERT stavkov za testne podatke v SQL (baza.sql)
+- pomoč pri konfiguraciji baze (PostgreSQL v Dockerju)
+- pomoč pri strukturi datotek ter delitvi datotek in map
+- pomoč pri vzpostavitvi in konfiguraciji PHP in Apache strežnika
+
+
+UPORABLJENI POZIVI (PROMPTS)
+
+1. INSERT stavki za testne podatke
+"Preveri vsebino te sql datoteke za projekt, kjer bom izdelal aplikacijo ki sledi stroškom, posebej pozoren bodi na strukturo baze, če je pravilno normalizirana, če vsebuje ustrezne šifrante (tabeele)."
+
+2. Konfiguracija baze
+Uredi docker-compose.yml datoteko in konfiguriraj tako, da bom lahko zagnal z ukazom docker compose up -d, baza je postgresql, port: 5432, POSTGRES_USER: admin POSTGRES_PASSWORD: geslo123 POSTGRES_DB: dsr_baza
+
+3. Struktura datotek in map
+"napiši mi pregledno strukturo datotek v katere bom lahko pisal php kodo."
+
+4. Vzpostavitev PHP in Apache strežnika
+"PHP na računalniku ni nameščen. V docker-compose.yml dodaj še PHP + Apache kontejner
+poleg PostgreSQL, da 'docker compose up -d' zažene vse. Prav tako dodaj dockerfile ki bo dodal postgresql driver in php knjižnico za pdo querrije"

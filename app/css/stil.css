@@ -1,0 +1,85 @@
+/*nas css - vecino dela naredi bootstrap, tukaj so samo malenkosti*/
+
+/*barve: temno zelena + kremno bela*/
+:root {
+    --zelena: #1f4d3a;
+    --zelena-svetla: #2d6a50;
+    --krem: #f7f3e9;
+    --bela: #fffdf8;
+}
+
+/*da je noga vedno cisto spodaj tudi ce je malo vsebine*/
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--krem);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222;
+}
+
+/*navigacija in noga v temno zeleni*/
+.navbar-zelena {
+    background-color: var(--zelena);
+}
+.noga {
+    background-color: var(--zelena);
+    color: var(--krem);
+}
+
+/*kartice bele na kremni podlagi*/
+.card {
+    background-color: var(--bela);
+    border-color: #e2dccd;
+}
+
+/*glavni gumb v nasi zeleni namesto bootstrap modre*/
+.btn-zelen {
+    background-color: var(--zelena);
+    border-color: var(--zelena);
+    color: #fff;
+}
+.btn-zelen:hover {
+    background-color: var(--zelena-svetla);
+    border-color: var(--zelena-svetla);
+    color: #fff;
+}
+.btn-outline-zelen {
+    border-color: var(--zelena);
+    color: var(--zelena);
+}
+.btn-outline-zelen:hover {
+    background-color: var(--zelena);
+    color: #fff;
+}
+
+/*naslovi v zeleni*/
+h1, h2, h3, h4, h5 {
+    color: var(--zelena);
+}
+
+/*iskalno polje ni cez celo sirino*/
+.iskanje {
+    max-width: 250px;
+}
+
+/*tabela prihodkov - zelena crta na levi da se loci od stroskov*/
+.tabela-prihodki {
+    border-left: 4px solid var(--zelena);
+}
+.tabela-prihodki thead th {
+    color: var(--zelena);
+    border-bottom: 1px solid #e2dccd;
+}
+
+/*prihodki zeleni, odhodki rdeci*/
+.prihodek {
+    color: #198754;
+    font-weight: bold;
+}
+.odhodek {
+    color: #c0392b;
+    font-weight: bold;
+}
